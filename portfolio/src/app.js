@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const content = require("./content");
+const { createDigitalTwinService } = require("./services/digitalTwin");
 const {
   buildProfileResponse,
   orderJourney,
@@ -9,8 +10,11 @@ const {
   formatDateRange,
 } = require("./utils/portfolio");
 
-function createApp() {
+function createApp(options = {}) {
   const app = express();
+  const digitalTwinService =
+    options.digitalTwinService || createDigitalTwinService({ profileContent: content });
+
   app.disable("x-powered-by");
 
   app.use(express.json());
@@ -52,6 +56,25 @@ function createApp() {
 
   app.get("/api/education", (_req, res) => {
     res.json(content.education);
+  });
+
+  app.post("/api/chat", async (req, res) => {
+    const message = req.body?.message;
+    const history = req.body?.history;
+
+    if (typeof message !== "string" || !message.trim()) {
+      return res.status(400).json({ error: "Message is required." });
+    }
+
+    try {
+      const result = await digitalTwinService.askCareerQuestion({ message, history });
+      return res.json(result);
+    } catch (error) {
+      const statusCode = Number.isInteger(error.statusCode) ? error.statusCode : 502;
+      return res.status(statusCode).json({
+        error: error.message || "Digital Twin request failed.",
+      });
+    }
   });
 
   app.use("/api", (_req, res) => {

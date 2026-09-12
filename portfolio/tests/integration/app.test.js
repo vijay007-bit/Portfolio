@@ -63,6 +63,64 @@ describe("portfolio app integration", () => {
     expect(response.text).toContain("Professional Portfolio");
     expect(response.text).toContain("Career Journey");
     expect(response.text).toContain("Future Portfolio Links");
+    expect(response.text).toContain("Ask My Digital Twin");
+  });
+
+  it("returns 400 when chat message is missing", async () => {
+    const chatApp = createApp({
+      digitalTwinService: {
+        askCareerQuestion: vi.fn(),
+      },
+    });
+
+    const response = await request(chatApp).post("/api/chat").send({});
+
+    expect(response.statusCode).toBe(400);
+    expect(response.body).toEqual({ error: "Message is required." });
+  });
+
+  it("returns chat answer from digital twin service", async () => {
+    const askCareerQuestion = vi.fn(async () => ({
+      reply: "Vijay has 6+ years of iOS experience.",
+      model: "openai/gpt-oss-120b",
+    }));
+    const chatApp = createApp({
+      digitalTwinService: {
+        askCareerQuestion,
+      },
+    });
+
+    const response = await request(chatApp)
+      .post("/api/chat")
+      .send({ message: "How much iOS experience do you have?", history: [] });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body.model).toBe("openai/gpt-oss-120b");
+    expect(response.body.reply).toContain("iOS experience");
+    expect(askCareerQuestion).toHaveBeenCalledWith({
+      message: "How much iOS experience do you have?",
+      history: [],
+    });
+  });
+
+  it("maps service errors to API responses", async () => {
+    const askCareerQuestion = vi.fn(async () => {
+      const error = new Error("OpenRouter request failed.");
+      error.statusCode = 502;
+      throw error;
+    });
+    const chatApp = createApp({
+      digitalTwinService: {
+        askCareerQuestion,
+      },
+    });
+
+    const response = await request(chatApp)
+      .post("/api/chat")
+      .send({ message: "Tell me about projects" });
+
+    expect(response.statusCode).toBe(502);
+    expect(response.body).toEqual({ error: "OpenRouter request failed." });
   });
 
   it("returns 404 for unknown API routes", async () => {

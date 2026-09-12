@@ -28,6 +28,7 @@
           <a href="#about">About</a>
           <a href="#journey">Journey</a>
           <a href="#work">Work</a>
+          <a href="#digital-twin">Ask Me</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
@@ -87,6 +88,65 @@
       <section class="section reveal">
         <h2 class="section-title">Future Portfolio Links</h2>
         <div id="future-list" class="future-grid"></div>
+      </section>
+
+      <section id="digital-twin" class="section reveal">
+        <h2 class="section-title">Ask My Digital Twin</h2>
+        <p class="twin-intro">
+          Ask questions about my career journey, technical strengths, and project experience.
+        </p>
+        <div class="twin-grid">
+          <div class="twin-chat-shell">
+            <header class="twin-chat-header">
+              <div class="twin-avatar" aria-hidden="true">DV</div>
+              <div>
+                <p class="twin-name">Vijay Digital Twin</p>
+                <p id="twin-presence" class="twin-presence">
+                  <span class="twin-dot" aria-hidden="true"></span>
+                  Online now
+                </p>
+              </div>
+            </header>
+
+            <div id="twin-log" class="twin-log" aria-live="polite"></div>
+            <div id="twin-typing" class="twin-typing" hidden>
+              <span></span><span></span><span></span>
+              <p>Digital Twin is typing</p>
+            </div>
+            <p id="twin-status" class="twin-status" role="status" aria-live="polite">Digital Twin is ready.</p>
+            <form id="twin-form" class="twin-form">
+              <label for="twin-input" class="sr-only">Ask a question</label>
+              <textarea
+                id="twin-input"
+                rows="3"
+                maxlength="1200"
+                placeholder="Ask about experience, skills, companies, or projects..."
+                required
+              ></textarea>
+              <div class="twin-form-row">
+                <p class="twin-hint">Press Enter to send. Shift+Enter for new line.</p>
+                <button id="twin-send" class="btn btn-primary" type="submit">Send</button>
+              </div>
+            </form>
+          </div>
+          <aside class="twin-chat-side">
+            <h3>Suggested Prompts</h3>
+            <div class="twin-prompts" id="twin-prompts">
+              <button type="button" class="prompt-chip" data-prompt="What are Vijay's core technical strengths?">
+                Core technical strengths
+              </button>
+              <button type="button" class="prompt-chip" data-prompt="Summarize Vijay's career journey in chronological order.">
+                Career timeline summary
+              </button>
+              <button type="button" class="prompt-chip" data-prompt="Which projects best represent Vijay's iOS experience?">
+                Best representative projects
+              </button>
+              <button type="button" class="prompt-chip" data-prompt="What kind of iOS projects has Vijay worked on across domains?">
+                Domains and project types
+              </button>
+            </div>
+          </aside>
+        </div>
       </section>
 
       <section id="contact" class="section reveal">
