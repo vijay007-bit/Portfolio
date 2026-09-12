@@ -1,0 +1,31 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for Vijay Vikram Singh",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "portfolio",
+    "nodejs",
+    "express",
+    "ios",
+    "professional-website"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^5.0.0",
+    "c8": "^12.0.0",
+    "supertest": "^7.2.2",
+    "vitest": "^5.0.0"
+  }
+}

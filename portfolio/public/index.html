@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional portfolio of Vijay Vikram Singh, Senior iOS Developer."
+    />
+    <title>Vijay Vikram Singh | Senior iOS Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <p class="brand">VVS</p>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#journey">Journey</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section reveal">
+        <div class="hero-content">
+          <p class="eyebrow">Professional Portfolio</p>
+          <h1 id="hero-name">Vijay Vikram Singh</h1>
+          <p class="hero-role" id="hero-role">Senior iOS Developer</p>
+          <p class="hero-summary" id="hero-summary"></p>
+          <div class="hero-cta">
+            <a id="linkedin-cta" class="btn btn-primary" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a id="email-cta" class="btn btn-secondary" href="#">Email</a>
+          </div>
+        </div>
+        <aside class="hero-panel">
+          <h2>Core Strengths</h2>
+          <ul id="strength-list"></ul>
+        </aside>
+      </section>
+
+      <section id="about" class="section reveal">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+          <article class="card">
+            <h3>Profile</h3>
+            <p id="about-pitch"></p>
+          </article>
+          <article class="card">
+            <h3>Education</h3>
+            <p id="education-block"></p>
+          </article>
+          <article class="card">
+            <h3>Location</h3>
+            <p id="location-block"></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="journey" class="section reveal">
+        <h2 class="section-title">Career Journey</h2>
+        <div id="journey-list" class="timeline"></div>
+      </section>
+
+      <section class="section reveal">
+        <h2 class="section-title">Skills Matrix</h2>
+        <div id="skills-list" class="skills-grid"></div>
+      </section>
+
+      <section id="work" class="section reveal">
+        <h2 class="section-title">Featured Work</h2>
+        <div id="work-list" class="work-grid"></div>
+      </section>
+
+      <section class="section reveal">
+        <h2 class="section-title">Future Portfolio Links</h2>
+        <div id="future-list" class="future-grid"></div>
+      </section>
+
+      <section id="contact" class="section reveal">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-card">
+          <p><strong>Email:</strong> <a id="contact-email" href="#"></a></p>
+          <p><strong>Phone:</strong> <span id="contact-phone"></span></p>
+          <p><strong>LinkedIn:</strong> <a id="contact-linkedin" target="_blank" rel="noreferrer" href="#"></a></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
